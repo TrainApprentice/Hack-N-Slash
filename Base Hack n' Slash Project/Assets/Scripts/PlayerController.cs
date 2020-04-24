@@ -29,6 +29,12 @@ public class PlayerController : MonoBehaviour
     private float v;
     private float h;
 
+    public int playerMaxHealth = 100;
+    public int playerCurrentHealth;
+    public HUDController healthBar;
+    public HUDController dashCooldown;
+    public HUDController hookCooldown;
+
     public GameObject spawnDashParticles;
     private float dashTimer;
     private bool invulnerable = false;
@@ -47,6 +53,11 @@ public class PlayerController : MonoBehaviour
     {
         player = GetComponent<CharacterController>();
         dashTimer = 4f;
+
+        playerCurrentHealth = playerMaxHealth;
+        healthBar.SetHealthBarMaxValue(playerMaxHealth);
+        dashCooldown.SetDashCooldownMaxValue(4);
+        hookCooldown.SetHookCooldownMaxValue(10); //placeholder number
     }
     
     // Update is called once per frame
@@ -59,6 +70,11 @@ public class PlayerController : MonoBehaviour
         {
             GameObject trail = (GameObject)Instantiate(spawnDashParticles, transform.position, transform.rotation);
         }
+
+        //update bars
+        healthBar.SetHealthBarValue(playerCurrentHealth);
+        dashCooldown.SetDashCooldownValue(dashTimer);
+        hookCooldown.SetHookCooldownValue(5); //placeholder number
     }
 
     // FixedUpdate is called once per physics calculation
