@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject spawnDashParticles;
     private float dashTimer;
-    private bool invulnerable = false;
+    public bool invulnerable = false;
 
     //public GameObject walkParticles;
 

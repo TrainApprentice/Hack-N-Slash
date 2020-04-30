@@ -32,7 +32,7 @@ public class EnemyBullet : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Hit player");
-            player.GetComponent<PlayerController>().playerCurrentHealth -= 5;
+            if(!player.GetComponent<PlayerController>().invulnerable) player.GetComponent<PlayerController>().playerCurrentHealth -= 5;
             Destroy(gameObject);//immediately destroy bullet
         }
     }
