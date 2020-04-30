@@ -55,6 +55,11 @@ public class WeaponController : MonoBehaviour
             //deactivate Weapon Wheel
             weaponWheel.SetActive(false);
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            fireWeapon();
+        }
     }
 
     void displayWeapon()
