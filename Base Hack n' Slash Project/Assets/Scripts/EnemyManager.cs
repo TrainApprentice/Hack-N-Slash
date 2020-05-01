@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class JellyManager : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
     public List<GameObject> jellies;
+    //public List<GameObject> jelliesChained;
     public GameObject jelly;
     public Transform target;
-    public float spawnDelay = 5f;
+    public float spawnDelay = 2f;
     
 
     // Start is called before the first frame update
@@ -31,7 +32,7 @@ public class JellyManager : MonoBehaviour
                 jellies.Remove(jellies[i]);
             }
         }
-        if (jellies.Count < 8)
+        if (jellies.Count < 4)
         {
             spawnDelay -= Time.deltaTime;
             if (spawnDelay <= 0)
@@ -39,7 +40,7 @@ public class JellyManager : MonoBehaviour
                 Vector3 spawnPos = new Vector3(Random.Range(-15, 15), this.transform.position.y, Random.Range(-15, 15));
                 var newJelly = Instantiate(jelly, spawnPos, Quaternion.identity);
                 jellies.Add(newJelly);
-                spawnDelay = 5f;
+                spawnDelay = 2f;
                
             }
         }
@@ -70,4 +71,5 @@ public class JellyManager : MonoBehaviour
         }
 
     }
+    
 }

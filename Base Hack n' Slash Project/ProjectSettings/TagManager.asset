@@ -7,6 +7,8 @@ TagManager:
   - Obstacle
   - Enemy
   - Undefined
+  - ChainedEnemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -16,8 +18,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - Bullet
   - 
   - 
   - 

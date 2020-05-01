@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private float h;
 
     public GameObject spawnDashParticles;
+    public GameObject bullet;
     private float dashTimer;
     private bool invulnerable = false;
 
@@ -105,6 +106,14 @@ public class PlayerController : MonoBehaviour
             Vector3 hookSpawn = new Vector3((diff.x / Mathf.Abs(diff.x)) * .5f, 0f, (diff.z / Mathf.Abs(diff.z)) * .5f);
             Rigidbody instantiatedProjectile = Instantiate(hook, transform.position + hookSpawn, Quaternion.identity) as Rigidbody;
             Physics.IgnoreCollision(instantiatedProjectile.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
+        }
+
+        //shoot bullet
+        if (Input.GetMouseButtonDown(0))
+        {
+            //print("Pew");
+            Quaternion shotAngle = new Quaternion(transform.rotation.x, transform.rotation.y, 90f, transform.rotation.w);
+            Instantiate(bullet, transform.position, shotAngle);
         }
 
         speedY += (gravity * Time.deltaTime);

@@ -7,32 +7,23 @@ public class FollowAI : MonoBehaviour
 {
     public NavMeshAgent agent;
     Transform target;
-    //List<GameObject> jellies;
+    public Material iceMat;
+    public Material poisonMat;
+    private Renderer thisMat;
     public GameObject jelly;
-    private float spawnDelay = 5f;
     public int enemyLevel;
     public bool isDead = false;
     private float speed;
     private Vector3 size = new Vector3();
     private int enemyType = 0;
-    private Renderer mat;
+    //private Renderer mat;
+    public bool hasChained = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        mat = GetComponent<Renderer>();
-        if (name == "MeleeJelly")
-        {
-            enemyLevel = 2;
-            enemyType = 0;
-            
-        }
-        else if (name == "RangedJelly")
-        {
-            enemyLevel = 1;
-            enemyType = 3;
-        }
-        else if (name == "IceJelly1")
+        thisMat = GetComponentInChildren<Renderer>();
+        if (name == "IceJelly1")
         {
             enemyLevel = 1;
             enemyType = 1;
@@ -77,6 +68,7 @@ public class FollowAI : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
         target = PlayerManager.instance.player.transform;
+        //thisMat = GetComponent<Renderer>();
         switch(enemyLevel)
         {
             case 1:
@@ -102,6 +94,18 @@ public class FollowAI : MonoBehaviour
                 transform.localScale = size;
                 break;
         }
+        switch(enemyType)
+        {
+            case 1:
+                thisMat.material = iceMat;
+                break;
+            case 2:
+                thisMat.material = poisonMat;
+                break;
+            default:
+                break;
+
+        }
         
     }
 
@@ -112,6 +116,24 @@ public class FollowAI : MonoBehaviour
        
         float distance = Vector3.Distance(target.position, transform.position);
         if (distance >= 10f) agent.SetDestination(target.position);
+        FacePlayer();
+        if (hasChained)
+        {
+            thisMat.material.color = Color.green;
+            gameObject.tag = "ChainedEnemy";
+        } else
+        {
+            thisMat.material.color = Color.magenta;
+            gameObject.tag = "Enemy";
+        }
+
     }
-    
+    private void FacePlayer()
+    {
+        if (target != null)
+        {
+            Vector3 lookPoint = new Vector3(target.position.x, 0f, target.position.z);
+            transform.LookAt(lookPoint);
+        }
+    }
 }
