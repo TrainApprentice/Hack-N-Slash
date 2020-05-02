@@ -34,20 +34,6 @@ public class HookScript : MonoBehaviour
         hookRB.velocity = new Vector3(aim.x * speed, 0, aim.z * speed);
     }
 
-<<<<<<< HEAD
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Obstacle"))
-        {
-            Debug.Log("Hit obstacle");
-            Destroy(gameObject);
-        }
-        else if (other.gameObject.CompareTag("Enemy"))
-        {
-            Debug.Log("Hit enemy");
-            GetComponent<Rigidbody>().velocity *= -.5f;
-            other.GetComponent<Rigidbody>().velocity = hookRB.velocity;
-=======
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Enemy"))
@@ -63,7 +49,7 @@ public class HookScript : MonoBehaviour
         {
             Debug.Log("Hit obstacle or player");
             Destroy(gameObject);
->>>>>>> Justin2
+
         }
     }
 }

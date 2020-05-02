@@ -120,8 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 680911703da1523419860fe1d0056890, type: 2}
-<<<<<<< HEAD
-=======
 --- !u!1 &12670526
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +258,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyBulletRB: {fileID: 7338319600924053439, guid: eb11bc32c5c00cb498dc6f8fee1c7ac0,
     type: 3}
->>>>>>> Justin2
 --- !u!1 &91700275
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,11 +285,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91700275}
   m_Material: {fileID: 0}
-<<<<<<< HEAD
-  m_IsTrigger: 1
-=======
   m_IsTrigger: 0
->>>>>>> Justin2
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -5294,8 +5287,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
-<<<<<<< HEAD
-=======
 --- !u!1001 &273552341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5351,7 +5342,7 @@ PrefabInstance:
     - target: {fileID: 4185985643793536140, guid: 963342cc9c71e8c4cabd1f844207a9d4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4185985643793536140, guid: 963342cc9c71e8c4cabd1f844207a9d4,
         type: 3}
@@ -5404,6 +5395,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e2d34ce5b74b249bf1eeb25eed16ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedWeapon: 0
+  weaponWheel: {fileID: 0}
+  ammoText: {fileID: 0}
 --- !u!114 &582625500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5476,14 +5470,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
->>>>>>> Justin2
 --- !u!1 &656225044
 GameObject:
   m_ObjectHideFlags: 0
@@ -10237,8 +10230,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
-<<<<<<< HEAD
-=======
 --- !u!1 &724435715
 GameObject:
   m_ObjectHideFlags: 0
@@ -10402,7 +10393,7 @@ Transform:
   m_LocalScale: {x: 20, y: 0.01, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &823004303
 GameObject:
@@ -10478,7 +10469,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 823004303}
   m_CullTransparentMesh: 0
->>>>>>> Justin2
 --- !u!1 &835500054
 GameObject:
   m_ObjectHideFlags: 0
@@ -10511,11 +10501,7 @@ Transform:
   - {fileID: 1580592876}
   - {fileID: 1376004973}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 13
-=======
   m_RootOrder: 14
->>>>>>> Justin2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &912655100
 GameObject:
@@ -10608,11 +10594,7 @@ Transform:
   m_LocalScale: {x: 25.313992, y: 25.313992, z: 25.313992}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 14
-=======
-  m_RootOrder: 16
->>>>>>> Justin2
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &969275961
 GameObject:
@@ -15497,11 +15479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
   m_IsActive: 0
-=======
-  m_IsActive: 1
->>>>>>> Justin2
 --- !u!199 &1154231702
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -20251,11 +20229,7 @@ GameObject:
   - component: {fileID: 1156829076}
   - component: {fileID: 1156829080}
   - component: {fileID: 1156829075}
-<<<<<<< HEAD
   m_Layer: 8
-=======
-  m_Layer: 0
->>>>>>> Justin2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -20275,19 +20249,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1034795208}
-<<<<<<< HEAD
-  spawnDashParticles: {fileID: 308183812073998960, guid: ba989e7ce78b0ed44ae65d8c0f2b226d,
-    type: 3}
-  bullet: {fileID: 9126130194549907748, guid: c01ea36aa86a1af499630319c9582854, type: 3}
-=======
   playerMaxHealth: 100
   playerCurrentHealth: 0
   healthBar: {fileID: 2022652663}
   dashCooldown: {fileID: 2022652663}
   hookCooldown: {fileID: 2022652663}
-  spawnDashParticles: {fileID: 9066014273920815023, guid: 7a66a037c2ecbc3469946fbe30121c82,
+  spawnDashParticles: {fileID: 308183812073998960, guid: ba989e7ce78b0ed44ae65d8c0f2b226d,
     type: 3}
->>>>>>> Justin2
+  invulnerable: 0
   hook: {fileID: 7853380337004192631, guid: eee2119d14523834683cdb6471d504b8, type: 3}
   hookSpeed: 20
 --- !u!136 &1156829076
@@ -20358,11 +20327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156829074}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: 7.36, y: 1, z: 0}
-=======
-  m_LocalPosition: {x: -7.65, y: 8.34, z: 0}
->>>>>>> Justin2
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1185365086}
@@ -20400,11 +20365,7 @@ GameObject:
   - component: {fileID: 1185365089}
   - component: {fileID: 1185365088}
   - component: {fileID: 1185365087}
-<<<<<<< HEAD
-  m_Layer: 8
-=======
   m_Layer: 0
->>>>>>> Justin2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20434,11 +20395,7 @@ BoxCollider:
   m_GameObject: {fileID: 1185365085}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-<<<<<<< HEAD
   m_Enabled: 1
-=======
-  m_Enabled: 0
->>>>>>> Justin2
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -20488,8 +20445,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185365085}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &1197788386
 GameObject:
   m_ObjectHideFlags: 0
@@ -20563,7 +20518,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197788386}
   m_CullTransparentMesh: 0
->>>>>>> Justin2
 --- !u!1 &1374193106
 GameObject:
   m_ObjectHideFlags: 0
@@ -20577,11 +20531,7 @@ GameObject:
   - component: {fileID: 1374193107}
   m_Layer: 0
   m_Name: GameManager
-<<<<<<< HEAD
   m_TagString: GameController
-=======
-  m_TagString: Untagged
->>>>>>> Justin2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20627,11 +20577,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 12
-=======
   m_RootOrder: 13
->>>>>>> Justin2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1376004972
 GameObject:
@@ -20663,8 +20609,6 @@ Transform:
   m_Father: {fileID: 835500055}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &1382490934
 GameObject:
   m_ObjectHideFlags: 0
@@ -20729,7 +20673,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1432743998
 GameObject:
@@ -20805,7 +20749,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432743998}
   m_CullTransparentMesh: 0
->>>>>>> Justin2
 --- !u!1 &1444041840
 GameObject:
   m_ObjectHideFlags: 0
@@ -25589,8 +25532,6 @@ Transform:
   m_Father: {fileID: 835500055}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &1482381073
 GameObject:
   m_ObjectHideFlags: 0
@@ -25664,7 +25605,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482381073}
   m_CullTransparentMesh: 0
->>>>>>> Justin2
 --- !u!1 &1580592875
 GameObject:
   m_ObjectHideFlags: 0
@@ -25695,8 +25635,6 @@ Transform:
   m_Father: {fileID: 835500055}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &1613299334
 GameObject:
   m_ObjectHideFlags: 0
@@ -25946,7 +25884,6 @@ RectTransform:
   m_AnchoredPosition: {x: -748, y: -435}
   m_SizeDelta: {x: 430.2, y: 88}
   m_Pivot: {x: 0.5, y: 0.5}
->>>>>>> Justin2
 --- !u!1 &1742569164
 GameObject:
   m_ObjectHideFlags: 0
@@ -25958,7 +25895,7 @@ GameObject:
   - component: {fileID: 1742569167}
   - component: {fileID: 1742569166}
   - component: {fileID: 1742569165}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dash particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30712,11 +30649,7 @@ GameObject:
   - component: {fileID: 1761028515}
   - component: {fileID: 1761028514}
   - component: {fileID: 1761028517}
-<<<<<<< HEAD
   m_Layer: 8
-=======
-  m_Layer: 0
->>>>>>> Justin2
   m_Name: Walk particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35470,8 +35403,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828a783b0aab98d4094efeef51de1825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-=======
 --- !u!1 &1782847217
 GameObject:
   m_ObjectHideFlags: 0
@@ -35875,7 +35806,7 @@ RectTransform:
   - {fileID: 1635804583}
   - {fileID: 1782847219}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -35897,7 +35828,6 @@ MonoBehaviour:
   healthBar: {fileID: 1711872266}
   dashCooldown: {fileID: 1635804582}
   hookCooldown: {fileID: 1782847218}
->>>>>>> Justin2
 --- !u!1 &2099720115
 GameObject:
   m_ObjectHideFlags: 0
@@ -35913,11 +35843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
   m_IsActive: 0
-=======
-  m_IsActive: 1
->>>>>>> Justin2
 --- !u!4 &2099720116
 Transform:
   m_ObjectHideFlags: 0
@@ -35936,8 +35862,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!1001 &846131405718348247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36007,7 +35931,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb11bc32c5c00cb498dc6f8fee1c7ac0, type: 3}
->>>>>>> Justin2
 --- !u!1001 &869381623427741869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36094,14 +36017,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beam Light
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 5553323280214327768, guid: 1cad2bdd42f250b4ab500aca3730d009,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-=======
->>>>>>> Justin2
     - target: {fileID: 7505430605158959554, guid: 1cad2bdd42f250b4ab500aca3730d009,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36169,7 +36089,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cad2bdd42f250b4ab500aca3730d009, type: 3}
-<<<<<<< HEAD
 --- !u!1001 &3347641307854663913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36239,8 +36158,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba989e7ce78b0ed44ae65d8c0f2b226d, type: 3}
-=======
->>>>>>> Justin2
 --- !u!1001 &4895489776862605171
 PrefabInstance:
   m_ObjectHideFlags: 0
