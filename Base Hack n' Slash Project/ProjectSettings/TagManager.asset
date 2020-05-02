@@ -7,8 +7,11 @@ TagManager:
   - Obstacle
   - Enemy
   - Undefined
+<<<<<<< HEAD
   - ChainedEnemy
   - Bullet
+=======
+>>>>>>> Justin2
   layers:
   - Default
   - TransparentFX

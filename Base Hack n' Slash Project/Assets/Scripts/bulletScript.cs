@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class bulletScript : MonoBehaviour
 {
+<<<<<<< HEAD
     public float speed = 30f;
     public Vector3 bulletIntersection;
     private Vector3 bulletDiff;
@@ -15,10 +16,17 @@ public class bulletScript : MonoBehaviour
     private int numHit = 3;
     //private GameObject trigSphere;
     private SphereCollider closestEnemy;
+=======
+    private float speed = 30f;
+    private Vector3 bulletIntersection;
+    private Vector3 bulletDiff;
+    private Rigidbody bulletRB;
+>>>>>>> Justin2
 
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
         manager = GameObject.FindGameObjectWithTag("GameController");
         closestEnemy = GetComponentInChildren<SphereCollider>();
         for (int i = 0; i < manager.GetComponent<EnemyManager>().jellies.Count; i++)
@@ -29,6 +37,10 @@ public class bulletScript : MonoBehaviour
         //if (manager.GetComponent<EnemyManager>().jellies != null) manager.GetComponent<EnemyManager>().jellies.CopyTo(enemies);
         //destroy bullet 1 second after spawning it
         Destroy(gameObject, 2f);
+=======
+        //destroy bullet 1 second after spawning it
+        Destroy(gameObject, 1f);
+>>>>>>> Justin2
 
         //Rotation
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -45,6 +57,7 @@ public class bulletScript : MonoBehaviour
         Vector3 aim = bulletDiff;
         aim.Normalize();
         bulletRB = GetComponent<Rigidbody>();
+<<<<<<< HEAD
         bulletRB.velocity = new Vector3(aim.x * speed, 0f, aim.z * speed);
     }
     private void Update()
@@ -53,6 +66,9 @@ public class bulletScript : MonoBehaviour
         {
             if (!possibleTargets.Contains(manager.GetComponent<EnemyManager>().jellies[i])) possibleTargets.Add(manager.GetComponent<EnemyManager>().jellies[i]);
         }
+=======
+        bulletRB.velocity = new Vector3(aim.x * speed, 0, aim.z * speed);
+>>>>>>> Justin2
     }
 
     private void OnTriggerEnter(Collider other)
@@ -64,6 +80,7 @@ public class bulletScript : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Enemy"))
         {
+<<<<<<< HEAD
             //Debug.Log("Hit enemy");
             //if (!enemiesHit.Contains(other.gameObject)) enemiesHit.Add(other.gameObject);
             if (bulletType == 7)
@@ -106,5 +123,12 @@ public class bulletScript : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, closestEnemy.radius);
+=======
+            Debug.Log("Hit enemy");
+            //push back the enemy slightly and destroy the bullet
+            other.GetComponent<Rigidbody>().velocity = (bulletRB.velocity * .25f);
+            Destroy(gameObject);
+        }
+>>>>>>> Justin2
     }
 }

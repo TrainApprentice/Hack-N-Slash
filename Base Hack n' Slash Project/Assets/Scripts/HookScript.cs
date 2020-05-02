@@ -34,6 +34,7 @@ public class HookScript : MonoBehaviour
         hookRB.velocity = new Vector3(aim.x * speed, 0, aim.z * speed);
     }
 
+<<<<<<< HEAD
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Obstacle"))
@@ -46,6 +47,23 @@ public class HookScript : MonoBehaviour
             Debug.Log("Hit enemy");
             GetComponent<Rigidbody>().velocity *= -.5f;
             other.GetComponent<Rigidbody>().velocity = hookRB.velocity;
+=======
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Hit enemy");
+            Physics.IgnoreCollision(GetComponent<Collider>(), other.gameObject.GetComponent<Collider>());
+            other.gameObject.GetComponent<basicEnemyScript>().move = (GetComponent<Rigidbody>().velocity * -2f);
+            GetComponent<Rigidbody>().velocity *= -2.1f;
+            transform.Translate(GetComponent<Rigidbody>().velocity * .01f);
+            //other.rigidbody.velocity = hookRB.velocity;
+        }
+        else//if (other.gameObject.CompareTag("Obstacle"))
+        {
+            Debug.Log("Hit obstacle or player");
+            Destroy(gameObject);
+>>>>>>> Justin2
         }
     }
 }
