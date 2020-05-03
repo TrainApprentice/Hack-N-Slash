@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision other)//trigger to collision
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.tag == "Enemy")
         {
             if (!invulnerable)
             {

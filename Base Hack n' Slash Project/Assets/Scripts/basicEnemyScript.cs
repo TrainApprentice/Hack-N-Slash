@@ -7,11 +7,13 @@ public class basicEnemyScript : MonoBehaviour
     private Rigidbody rb;
     public Vector3 move = new Vector3();
     private float timer = 1f;
+    private string hitObject;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
 
     // Update is called once per physics calc
