@@ -107,6 +107,7 @@ public class PlayerController : MonoBehaviour
         if (player.isGrounded)
         {
             if (Input.GetButton("Jump") && dashTimer < .25f) speedY = jumpImpulse;
+            else speedY = 0;
         }
 
         //movement for dash is done by physics calculation, not frames
