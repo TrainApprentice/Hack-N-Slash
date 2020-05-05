@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 2031630242016568337}
   - component: {fileID: 6115683053021504562}
   - component: {fileID: 935954090525226731}
+  - component: {fileID: -5862557160808023243}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,3 +94,26 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-5862557160808023243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6346769521730458269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a337ffc03fd5ea84e8d61a243805eb0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ret: {fileID: 3731436882361045778, guid: d244ef2919846164daf43801e0d52fbc, type: 3}
+  retVert: {fileID: 8204984079174996092, guid: 1aa1d41708f94014fb6900a561b46882, type: 3}
+  retPoint: {x: 0, y: 0, z: 0}
+  grenade: {fileID: 7074631038350953114, guid: 6af46f2261b66644a9b64925241ca233, type: 3}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
+  flightTime: 0.5
+  lineVisual: {fileID: 0}
+  lineSegment: 10
+  originOffset: {x: 0, y: 1, z: 0}

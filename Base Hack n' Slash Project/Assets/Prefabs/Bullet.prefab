@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1569870655201546634}
   - component: {fileID: 4785354176886915326}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,9 +55,8 @@ GameObject:
   - component: {fileID: 5977759810254588373}
   - component: {fileID: 8070643495963571290}
   - component: {fileID: 2707570789788796495}
-  - component: {fileID: 5520284313487186936}
-  - component: {fileID: 7725409796601641861}
   - component: {fileID: 1759418965439646250}
+  - component: {fileID: 1286934592116307249}
   m_Layer: 9
   m_Name: Bullet
   m_TagString: Bullet
@@ -126,38 +125,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &5520284313487186936
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9126130194549907748}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7725409796601641861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9126130194549907748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8931e1ab2d2b3a4e8d1a7b88e56e4ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 30
-  bulletIntersection: {x: 0, y: 0, z: 0}
-  manager: {fileID: 0}
-  target: {fileID: 0}
-  trigSphere: {fileID: 7945617116339059475, guid: 48ee4a7dad4d9fe449e7717ffd9544e3,
-    type: 3}
 --- !u!54 &1759418965439646250
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -174,3 +141,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &1286934592116307249
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9126130194549907748}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

@@ -15,9 +15,9 @@ public class FollowAI : MonoBehaviour
     public bool isDead = false;
     private float speed;
     private Vector3 size = new Vector3();
-    private int enemyType = 0;
+    public int enemyType = 0;
     //private Renderer mat;
-    public bool hasChained = false;
+    //public bool hasChained = false;
 
     // Start is called before the first frame update
     void Start()
@@ -55,16 +55,16 @@ public class FollowAI : MonoBehaviour
         }
         else
         {
-            float levelRandom = Random.Range(0, 1);
+            float levelRandom = Random.Range(0, 1f);
             if (levelRandom <= .6f) enemyLevel = 1;
             if (levelRandom > .6f && levelRandom <= .9f) enemyLevel = 2;
             if (levelRandom > .9f) enemyLevel = 3;
 
-            float typeRandom = Random.Range(0, 1);
+            float typeRandom = Random.Range(0, 1f);
             if (typeRandom <= .49f) enemyType = 1;
             if (typeRandom > .49f) enemyType = 2;
         }
-
+        
 
         agent = GetComponent<NavMeshAgent>();
         target = PlayerManager.instance.player.transform;
@@ -72,25 +72,25 @@ public class FollowAI : MonoBehaviour
         switch(enemyLevel)
         {
             case 1:
-                speed = 20;
-                size = new Vector3(1, 1, 1);
+                speed = 10;
+                size = new Vector3(.5f, .5f, .5f);
                 transform.localScale = size;
                 
                 break;
             case 2:
-                speed = 15;
-                size = new Vector3(2, 2, 2);
+                speed = 7;
+                size = new Vector3(1f, 1f, 1f);
                 transform.localScale = size;
                 break;
 
             case 3:
-                speed = 10;
-                size = new Vector3(3, 3, 3);
+                speed = 3;
+                size = new Vector3(1.5f, 1.5f, 1.5f);
                 transform.localScale = size;
                 break;
             default:
-                speed = 20;
-                size = new Vector3(1, 1, 1);
+                speed = 10;
+                size = new Vector3(.5f, .5f, .5f);
                 transform.localScale = size;
                 break;
         }
@@ -106,26 +106,19 @@ public class FollowAI : MonoBehaviour
                 break;
 
         }
+        agent.speed = speed;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isDead) Destroy(gameObject);
+        //if (isDead) Destroy(gameObject);
        
         float distance = Vector3.Distance(target.position, transform.position);
         if (distance >= 10f) agent.SetDestination(target.position);
         FacePlayer();
-        if (hasChained)
-        {
-            thisMat.material.color = Color.green;
-            gameObject.tag = "ChainedEnemy";
-        } else
-        {
-            thisMat.material.color = Color.magenta;
-            gameObject.tag = "Enemy";
-        }
+        
 
     }
     private void FacePlayer()

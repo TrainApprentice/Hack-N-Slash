@@ -20,7 +20,7 @@ public class EnemyShoot : MonoBehaviour
         if(shootTimer > 3f)
         {
             shootTimer = 0f;
-            Debug.Log("Enemy shot");
+            //Debug.Log("Enemy shot");
             //calculate direction for bullet
             float dx = player.transform.position.x - transform.position.x;
             float dz = player.transform.position.z - transform.position.z;

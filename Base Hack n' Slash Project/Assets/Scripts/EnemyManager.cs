@@ -28,11 +28,13 @@ public class EnemyManager : MonoBehaviour
         {
             if (jellies[i].GetComponent<FollowAI>().isDead)
             {
-                Destroy(jellies[i]);
-                jellies.Remove(jellies[i]);
+                //EnemySplit(jellies[i].GetComponent<FollowAI>().enemyLevel, jellies[i].GetComponent<FollowAI>().enemyType);
+                //jellies.Remove(jellies[i]);
+                //Destroy(jellies[i].gameObject);
+                
             }
         }
-        if (jellies.Count < 4)
+        if (jellies.Count < 8)
         {
             spawnDelay -= Time.deltaTime;
             if (spawnDelay <= 0)
@@ -44,6 +46,8 @@ public class EnemyManager : MonoBehaviour
                
             }
         }
+        //print(jellies.Count);
+        KillAll();
     }
     private void EnemySplit(int level, int type)
     {
@@ -70,6 +74,14 @@ public class EnemyManager : MonoBehaviour
             }
         }
 
+    }
+    private void KillAll()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            print("KILL");
+            for (int i = 0; i < jellies.Count; i++) jellies[i].GetComponent<FollowAI>().isDead = true;
+        }
     }
     
 }

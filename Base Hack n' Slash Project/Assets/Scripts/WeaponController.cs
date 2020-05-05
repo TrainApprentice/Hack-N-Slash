@@ -14,11 +14,15 @@ public class WeaponController : MonoBehaviour
 
     public Text ammoText;
 
+    public GameObject bullet;
+    public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
         selectedWeapon = 1;
         weaponWheel.SetActive(false);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -109,9 +113,12 @@ public class WeaponController : MonoBehaviour
                 break;
             case 2:
                 //Fire weapon
+                GameObject chainBullet = Instantiate(bullet, player.transform.position, Quaternion.identity);
+                if (!chainBullet.GetComponent<ChainBullet>()) chainBullet.AddComponent<ChainBullet>();
                 break;
             case 3:
                 //Fire weapon
+               
                 break;
             default:
                 print("Something went horribly wrong");
@@ -144,6 +151,7 @@ public class WeaponController : MonoBehaviour
         hideWeapon();
         selectedWeapon = 1;
         displayWeapon();
+        player.GetComponent<punchScript>().enabled = false;
     }
 
     public void switchChainBoomerang()
@@ -152,6 +160,7 @@ public class WeaponController : MonoBehaviour
         hideWeapon();
         selectedWeapon = 2;
         displayWeapon();
+        player.GetComponent<punchScript>().enabled = false;
     }
 
     public void switchBoomGuantlets()
@@ -160,6 +169,7 @@ public class WeaponController : MonoBehaviour
         hideWeapon();
         selectedWeapon = 3;
         displayWeapon();
+        player.GetComponent<punchScript>().enabled = true;
     }
 
 }
