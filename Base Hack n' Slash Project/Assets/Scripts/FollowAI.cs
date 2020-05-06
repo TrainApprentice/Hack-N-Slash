@@ -16,8 +16,9 @@ public class FollowAI : MonoBehaviour
     private float speed;
     private Vector3 size = new Vector3();
     public int enemyType = 0;
+    public int damage;
     //private Renderer mat;
-    //public bool hasChained = false;
+    public bool hasChained = false;
 
     // Start is called before the first frame update
     void Start()
@@ -73,24 +74,29 @@ public class FollowAI : MonoBehaviour
         {
             case 1:
                 speed = 10;
-                size = new Vector3(.5f, .5f, .5f);
+                damage = 10;
+                size = new Vector3(1f, 1f, 1f);
                 transform.localScale = size;
-                
                 break;
+
             case 2:
                 speed = 7;
-                size = new Vector3(1f, 1f, 1f);
+                damage = 15;
+                size = new Vector3(2f, 2f, 2f);
                 transform.localScale = size;
                 break;
 
             case 3:
                 speed = 3;
-                size = new Vector3(1.5f, 1.5f, 1.5f);
+                damage = 25;
+                size = new Vector3(3f, 3f, 3f);
                 transform.localScale = size;
                 break;
+
             default:
                 speed = 10;
-                size = new Vector3(.5f, .5f, .5f);
+                damage = 10;
+                size = new Vector3(1f, 1f, 1f);
                 transform.localScale = size;
                 break;
         }
@@ -108,6 +114,7 @@ public class FollowAI : MonoBehaviour
         }
         agent.speed = speed;
         
+        
     }
 
     // Update is called once per frame
@@ -118,7 +125,8 @@ public class FollowAI : MonoBehaviour
         float distance = Vector3.Distance(target.position, transform.position);
         if (distance >= 10f) agent.SetDestination(target.position);
         FacePlayer();
-        
+        if (GetComponent<Hit>()) hasChained = true;
+        if (Input.GetKeyDown(KeyCode.P)) print(hasChained);
 
     }
     private void FacePlayer()

@@ -28,16 +28,22 @@ public class PlayerController : MonoBehaviour
     private float speedY = 0;
     private float v;
     private float h;
+    private float iFrames = 1f;
 
-    public int playerMaxHealth = 100;
-    public int playerCurrentHealth;
+    public float playerMaxHealth = 100;
+    public float playerCurrentHealth;
     public HUDController healthBar;
     public HUDController dashCooldown;
     public HUDController hookCooldown;
+    public Material poison;
+    public Material ice;
+    public Material baseMat;
+
 
     public GameObject spawnDashParticles;
     private float dashTimer;
     public bool invulnerable = false;
+    private Renderer mat;
 
     //public GameObject walkParticles;
 
@@ -48,10 +54,16 @@ public class PlayerController : MonoBehaviour
     private Vector3 intersection;
     private Vector3 diff;
 
+    private bool isPoisoned = false;
+    private bool isSlowed = false;
+    private float slowTimer = 5f;
+    private float poisonTimer = 3f;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<CharacterController>();
+        mat = GetComponent<Renderer>();
         dashTimer = 4f;
         hookTimer = 6f;
 
@@ -59,6 +71,9 @@ public class PlayerController : MonoBehaviour
         healthBar.SetHealthBarMaxValue(playerMaxHealth);
         dashCooldown.SetDashCooldownMaxValue(3);
         hookCooldown.SetHookCooldownMaxValue(5); //placeholder number
+        
+            
+        
     }
 
     // Update is called once per frame
@@ -84,6 +99,38 @@ public class PlayerController : MonoBehaviour
     // FixedUpdate is called once per physics calculation
     void FixedUpdate()
     {
+        //Status Effects
+
+        if (isSlowed)
+        {
+            mat.material = ice;
+            speed = 5f;
+            slowTimer -= Time.deltaTime;
+            if(slowTimer <= 0)
+            {
+                speed = 10f;
+                isSlowed = false;
+                slowTimer = 5f;
+            }
+        }
+
+        if(isPoisoned)
+        {
+            mat.material = poison;
+            poisonTimer -= Time.deltaTime;
+            playerCurrentHealth -= Time.deltaTime * 6.666667f;
+            if(poisonTimer <= 0)
+            {
+                isPoisoned = false;
+                poisonTimer = 3f;
+            }
+        }
+        if (!isPoisoned && !isSlowed) mat.material = baseMat;
+        
+
+        
+        
+
         //Rotation
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane plane = new Plane(Vector3.up, transform.position);
@@ -117,6 +164,15 @@ public class PlayerController : MonoBehaviour
             invulnerable = true;
         }
         else invulnerable = false;
+        if (invulnerable && dashTimer >= .25f)
+        {
+            iFrames -= Time.deltaTime;
+            if (iFrames <= 0)
+            {
+                invulnerable = false;
+                iFrames = 1f;
+            }
+        }
 
         //hook
         if (Input.GetMouseButtonDown(1) && hookTimer > 5f)
@@ -140,15 +196,20 @@ public class PlayerController : MonoBehaviour
         {
             if (!invulnerable)
             {
-                Debug.Log("Not invulnerable");
-                playerCurrentHealth -= 10;
+               
+                //Debug.Log("Not invulnerable");
+                playerCurrentHealth -= other.gameObject.GetComponent<FollowAI>().damage;
+                if (other.gameObject.GetComponent<FollowAI>().enemyType == 1) isSlowed = true;
+                if (other.gameObject.GetComponent<FollowAI>().enemyType == 2) isPoisoned = true;
+                //invulnerable = true;
                 //player.Move(new Vector3(-velocity.x * Time.deltaTime * 15f, 0f, -velocity.z * Time.deltaTime * 15f));
             }
-            else Debug.Log("Invulnerable");
+           // else Debug.Log("Invulnerable");
         }
         else if (other.gameObject.CompareTag("Obstacle"))
         {
             Debug.Log("Obstacle");
         }
     }
+    
 }

@@ -9,13 +9,13 @@ public class HUDController : MonoBehaviour
     public Slider dashCooldown;
     public Slider hookCooldown;
 
-    public void SetHealthBarMaxValue(int value)
+    public void SetHealthBarMaxValue(float value)
     {
         healthBar.maxValue = value;
         healthBar.value = value;
     }
 
-    public void SetHealthBarValue(int value)
+    public void SetHealthBarValue(float value)
     {
         healthBar.value = value;
     }

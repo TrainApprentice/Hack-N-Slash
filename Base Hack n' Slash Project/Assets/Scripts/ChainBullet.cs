@@ -6,9 +6,10 @@ public class ChainBullet : MonoBehaviour
 {
     public int numHits = 3;
 
-    public float movSpeed, distance;
-    public Transform target;
+    public float movSpeed, maxChain;
+    public GameObject target;
     public EnemyManager pullEnemies;
+    public GameObject triggerSphere;
 
     private Vector3 bulletIntersection;
     private Vector3 bulletDiff;
@@ -22,14 +23,15 @@ public class ChainBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //triggerSphere = GameObject.FindGameObjectWithTag("EditorOnly");
         pullEnemies = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemyManager>();
         for(int i = 0; i < pullEnemies.jellies.Count; i++)
         {
             possibleTargets.Add(pullEnemies.jellies[i].transform);
         }
-        print(possibleTargets.Count);
-        chainRadius = GetComponentInChildren<SphereCollider>();
-        
+        //print(possibleTargets.Count);
+        //chainRadius = GetComponentInChildren<SphereCollider>();
+        maxChain = 20f;
         movSpeed = 50f;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane plane = new Plane(Vector3.up, transform.position);
@@ -53,118 +55,91 @@ public class ChainBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distance = chainRadius.radius;
+        
+        //distance = chainRadius.radius;
         //print(numHits);
         if (isChaining)
         {
             if (target)
             {
-                //if (possibleTargets.Contains(target)) possibleTargets.Remove(target);
-                var dist = Vector3.Distance(transform.position, target.position);
+                var dist = Vector3.Distance(transform.position, target.transform.position);
 
                 Vector3 trajectory = CalculateTrajectoryVelocity(transform.position, target.transform.position, .2f);
                 bulletRB.velocity = new Vector3(trajectory.x, 0f, trajectory.z);
-
-                //Rotate Bullet
-                /*
-                var lookPos = target.position - transform.position;
-                var rotation = Quaternion.LookRotation(lookPos);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime);
-                */
-                //Move Bullet
-                //transform.Translate(Vector3.forward * movSpeed * Time.deltaTime);
-
-
-                /*
-                if (dist < distance)
-                {
-                    bulletRB.velocity = Vector3.zero;
-                    movSpeed = 0f;
-                    Chain();
-                } */
+                isChaining = false;
                 
             }
         }
+        if (target) target.GetComponentInChildren<Renderer>().material.color = Color.black;
+        
+
     }
     void Chain(Transform enemyStart)
     {
         isChaining = true;
         if (possibleTargets.Count > 0)
         {
-            if (possibleTargets.Contains(target)) numHits--;
-            possibleTargets.Remove(target);
+            if (target != null)
+            {
+                if (possibleTargets.Contains(target.transform)) numHits--;
+                possibleTargets.Remove(target.transform);
+            }
             
             if (numHits <= 0)
             {
                 EndChain();
             }
         }
-        Collider[] nextTarget = Physics.OverlapSphere(enemyStart.position, distance);
+        
         if (!foundTarget)
         {
-            foreach (Collider col in nextTarget)
-            {
-                if (col.gameObject.GetComponent<FollowAI>() != null)
-                {
-                    if (possibleTargets.Contains(col.gameObject.transform) && !foundTarget)
-                    {
-                        CheckChain();
-                    }
-                    else
-                    {
-                        target = col.gameObject.transform;
-                        foundTarget = true;
-                        
-                    }
-                }
-            }
+            CheckChain(enemyStart);
+            //print("Thing");
+            
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionStay(Collision other)
     {
-        if(other.tag == "Enemy" && possibleTargets.Contains(other.transform))
+        if(other.gameObject.tag == "Enemy" && possibleTargets.Contains(other.transform))
         {
             print("Hit!");
-            possibleTargets.Remove(other.transform);
+            possibleTargets.Remove(other.gameObject.transform);
+            other.gameObject.AddComponent<Hit>();
             foundTarget = false;
-            //target = other.transform;
             Chain(other.transform);
         }
-       
     }
-    /*
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Enemy" && !possibleTargets.Contains(other.transform) && target != other.transform)
-        {
-            possibleTargets.Add(other.transform);
-        }
-    } */
+   
     void EndChain()
     {
         Destroy(gameObject);
     }
-    void CheckChain()
+    void CheckChain(Transform enemyStart)
     {
-        print(distance);
-        if (!foundTarget && distance <= 20f)
+        Collider[] nextTarget = Physics.OverlapSphere(enemyStart.position, maxChain);
+        if (nextTarget == null) EndChain();
+        foreach (Collider col in nextTarget)
         {
-            chainRadius.radius += .5f;
-            distance = chainRadius.radius;
-            movSpeed = 0f;
+            if (!col.gameObject.GetComponent<Hit>() && col.gameObject.tag == "Enemy")
+            {
+                float dist = Vector3.Distance(transform.position, col.transform.position);
+                float distanceToClosestEnemy = 1000;
+                if (dist < distanceToClosestEnemy)
+                {
+                    distanceToClosestEnemy = dist;
+                    target = col.gameObject;
+                }
+            }
+            
         }
-        else
-        {
-            movSpeed = 50f;
-            chainRadius.radius = .1f;
-            distance = chainRadius.radius;
-        }
+        //print(distance);
+        
 
     }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, distance);
+        Gizmos.DrawWireSphere(transform.position, maxChain);
     }
 
     Vector3 CalculateTrajectoryVelocity(Vector3 origin, Vector3 target, float t)
