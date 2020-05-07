@@ -18,6 +18,7 @@ public class HookScript : MonoBehaviour
     private GameObject player;
     private GameObject[] hookParticleArray = new GameObject[20];
     private GameObject baseHookParticle;
+    private float angle;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,29 @@ public class HookScript : MonoBehaviour
         aim.Normalize();
         hookRB = GetComponent<Rigidbody>();
         hookRB.velocity = new Vector3(aim.x * speed, 0, aim.z * speed);
+
+        if (aim.z >= 0f)
+        {
+            angle = Vector3.Angle(hookRB.velocity, new Vector3(1f, 0f, 0f));
+            transform.rotation = Quaternion.Euler(90f, 0f, angle + 115f);
+        }
+        else
+        {
+            angle = Vector3.Angle(hookRB.velocity, new Vector3(-1f, 0f, 0f));
+            transform.rotation = Quaternion.Euler(90f, 0f, angle + 295f);
+        }
+        
+        /* -20
+         * (90f, 0f, -20f) south west
+         * (90f, 0f, 25f) south
+         * (90f, 0f, 70f) south east
+         * (90f, 0f, 115f) east
+         * (90f, 0f, 160f)
+         * (90f, 0f, 205f) north
+         * (90f, 0f, 250f)
+         * (90f, 0f, 295f) west
+         * (90f, 0f, 340f)
+         */
 
         //make the hook particles
         baseHookParticle = GameObject.FindGameObjectWithTag("HookParticle");

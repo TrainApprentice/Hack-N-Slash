@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
     private float speedY = 0;
     private float v;
     private float h;
+    private Renderer playerRenderer;
+    public Material normalMaterial;
+    public Material hurtMaterial;
+    private float hitTimer = 2f;
 
     public int playerMaxHealth = 100;
     public int playerCurrentHealth;
@@ -38,8 +42,6 @@ public class PlayerController : MonoBehaviour
     public GameObject spawnDashParticles;
     private float dashTimer;
     public bool invulnerable = false;
-
-    //public GameObject walkParticles;
 
     public Rigidbody hook;
     public float hookSpeed = 20;
@@ -59,6 +61,8 @@ public class PlayerController : MonoBehaviour
         healthBar.SetHealthBarMaxValue(playerMaxHealth);
         dashCooldown.SetDashCooldownMaxValue(3);
         hookCooldown.SetHookCooldownMaxValue(5); //placeholder number
+
+        playerRenderer = GetComponent<Renderer>();
     }
     
     // Update is called once per frame
@@ -119,6 +123,12 @@ public class PlayerController : MonoBehaviour
         }
         else invulnerable = false;
 
+        //set material for player if hit
+        if (hitTimer > 1f) playerRenderer.material = normalMaterial;
+        else invulnerable = true;
+        hitTimer += Time.deltaTime;
+
+
         //hook
         if (Input.GetMouseButtonDown(1) && hookTimer > 5f)
         {
@@ -143,7 +153,8 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Not invulnerable");
                 playerCurrentHealth -= 10;
-                //player.Move(new Vector3(-velocity.x * Time.deltaTime * 15f, 0f, -velocity.z * Time.deltaTime * 15f));
+                playerRenderer.material = hurtMaterial;
+                hitTimer = 0f;
             }
             else Debug.Log("Invulnerable");
         }
