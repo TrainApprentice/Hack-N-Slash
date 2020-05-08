@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: f83bbdde8f715e44789e6c5af3610470
+  - enabled: 1
+    path: Assets/Scenes/JustinScene.unity
+    guid: 195ff68cf408bfe4eb411db5590331f5
+  - enabled: 1
+    path: Assets/Scenes/GameoverMenu.unity
+    guid: 9f1d1f6f9edd70240aab68b4d628d719
+  m_configObjects: {}
